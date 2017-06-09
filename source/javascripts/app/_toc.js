@@ -1,4 +1,3 @@
-//= require ../lib/_jquery
 //= require ../lib/_jquery_ui
 //= require ../lib/_jquery.tocify
 //= require ../lib/_imagesloaded.min
@@ -12,7 +11,12 @@
 
   var makeToc = function() {
     global.toc = $("#toc").tocify({
-      selectors: 'h1, h2',
+      selectors: 'h1, h2, h3',
+      headerLevels: {
+        'h1' : 1,
+        'h2' : 1,
+        'h3' : 2
+      },
       extendPage: false,
       theme: 'none',
       smoothScroll: false,
@@ -48,10 +52,8 @@
   $(function() {
     makeToc();
     animate();
-    setupLanguages($('body').data('languages'));
     $('.content').imagesLoaded( function() {
       global.toc.calculateHeights();
     });
   });
 })(window);
-
