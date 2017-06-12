@@ -11,6 +11,10 @@ includes:
   - introduction
   - authentication
   - samples
+  - single_sample
+  - multiple_samples
+  - endpoints
+  - database
   - errors
 
 search: true

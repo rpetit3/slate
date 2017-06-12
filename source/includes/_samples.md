@@ -1,13 +1,11 @@
----
-api_root: https://staphopia.emory.edu/api
----
-
 # Samples
-In Staphopia, a sample is a single sequenced genome. In the case of genomes publicly available from ENA/SRA, each experiment is a sample. The sample is the central identifier in the API. You will be using sample IDs to gather associated analsis results.
+In Staphopia, a sample is a single sequenced genome. In the case of genomes publicly available from ENA/SRA, each exeriment accession is a sample. The sample is the central identifier in Staphopia. You will use sample IDs to gather associated analysis results.
 
 In most cases you can use a simple GET request to get info on a single sample or POST requests to get info on multiple samples. In the cases where sequences (assembly, genes, etc...) are returned the requests will be limited to a single sample at a time.
 
-### GET List All Samples
+Below are endpoints to access samples. Methods to access analysis results for a single sample and multiple samples will be described in following sections.
+
+### GET All Samples
 > Definition
 
 ```plaintext
@@ -30,24 +28,15 @@ curl -H "Authorization: Token YOUR_API_TOKEN_HERE" https://staphopia.emory.edu/a
     "next": "https://staphopia.emory.edu/api/sample/?page=2",
     "previous": null,
     "results": [
+            "results": [
         {
             "sample_id": 2425,
-            "sample_tag": "ERX359411",
             "is_paired": true,
             "is_public": true,
-            "md5sum": "4e1afce010e8659b8a3a9729f3914e4e",
+            "is_published": true,
+            "sample_tag": "ERX359411",
             "st_original": "188",
             "st_stripped": 188,
-            "st_is_exact_match": true
-        },
-        {
-            "sample_id": 4658,
-            "sample_tag": "SRX477069",
-            "is_paired": true,
-            "is_public": true,
-            "md5sum": "869d19fe7147aba68fa5db6410dc8e96",
-            "st_original": "8",
-            "st_stripped": 8,
             "st_is_exact_match": true
         }
     ]
@@ -94,16 +83,6 @@ curl -H "Authorization: Token YOUR_API_TOKEN_HERE" https://staphopia.emory.edu/a
             "st_original": "2371",
             "st_stripped": 2371,
             "st_is_exact_match": true
-        },
-        {
-            "sample_id": 95,
-            "is_paired": true,
-            "is_public": true,
-            "is_published": true,
-            "sample_tag": "ERX061507",
-            "st_original": "15",
-            "st_stripped": 15,
-            "st_is_exact_match": true
         }
     ]
 }
@@ -144,22 +123,47 @@ curl -H "Authorization: Token YOUR_API_TOKEN_HERE" https://staphopia.emory.edu/a
             "pmid": [
                 26873713
             ]
-        },
-        {
-            "sample_id": 5667,
-            "is_paired": true,
-            "is_public": true,
-            "is_published": true,
-            "sample_tag": "ERX116916",
-            "st_original": "8",
-            "st_stripped": 8,
-            "st_is_exact_match": true,
-            "pmid": [
-                26873713
-            ]
         }
     ]
 }
 ```
 
 Returns a list of samples that have been associated with a publication.
+
+
+### GET Single Sample
+> Definition
+
+```plaintext
+GET https://staphopia.emory.edu/api/sample/<SAMPLE_ID>
+```
+
+> Example Request
+
+```shell
+curl -H "Authorization: Token YOUR_API_TOKEN_HERE" https://staphopia.emory.edu/api/sample/500/
+```
+
+> Example Response
+
+```json
+{
+    "count": 1,
+    "next": null,
+    "previous": null,
+    "results": [
+        {
+            "sample_id": 500,
+            "is_paired": true,
+            "is_public": true,
+            "is_published": true,
+            "sample_tag": "ERX105420",
+            "st_original": "239",
+            "st_stripped": 239,
+            "st_is_exact_match": true
+        }
+    ]
+}
+```
+
+Returns a single sample which is public or that you own. An empty result will be returned if a request is made for a sample which is not public.
