@@ -10,8 +10,6 @@ Below are endpoints to access samples. Methods to access analysis results for a 
 
 ```plaintext
 GET https://staphopia.emory.edu/api/sample/
-
-GET https://staphopia.emory.edu/api/sample/?st=INT
 ```
 
 > Example Request
@@ -28,7 +26,6 @@ curl -H "Authorization: Token YOUR_API_TOKEN_HERE" https://staphopia.emory.edu/a
     "next": "https://staphopia.emory.edu/api/sample/?page=2",
     "previous": null,
     "results": [
-            "results": [
         {
             "sample_id": 2425,
             "is_paired": true,
@@ -45,11 +42,11 @@ curl -H "Authorization: Token YOUR_API_TOKEN_HERE" https://staphopia.emory.edu/a
 
 Returns a list of samples that either you own or have been made public. The resulting set can be filtered by sequence types.
 
-#### Query Parameters
+#### Options
 
-Parameter | Data Type | Description
+Option    | Type      | Description
 --------- | --------- | -----------
-st        | integer   | Filter the samples based on a specific sequence type.
+st        | int       | Filter the samples based on a specific sequence type.
 
 
 
@@ -131,11 +128,47 @@ curl -H "Authorization: Token YOUR_API_TOKEN_HERE" https://staphopia.emory.edu/a
 Returns a list of samples that have been associated with a publication.
 
 
+### GET MLST Distinct Sample Set
+> Definition
+
+```plaintext
+GET https://staphopia.emory.edu/api/sample/unique_st/
+```
+
+> Example Request
+
+```shell
+curl -H "Authorization: Token YOUR_API_TOKEN_HERE" https://staphopia.emory.edu/api/sample/unique_st/
+```
+
+> Example Response
+
+```json
+{
+    "count": 417,
+    "next": null,
+    "previous": null,
+    "results": [
+        {
+            "sample_id": 961,
+            "st": 1,
+            "is_paired": true,
+            "is_public": true,
+            "is_published": true,
+            "sample_tag": "ERX147839",
+            "rank": 3
+        }
+    ]
+}
+```
+
+Returns a set up samples each having a different seqeunce type (MLST). The priority is to select published samples first, then quality of the sample.
+
 ### GET Single Sample
 > Definition
 
 ```plaintext
-GET https://staphopia.emory.edu/api/sample/<SAMPLE_ID>
+GET https://staphopia.emory.edu/api/sample/<sample_id>/
 ```
 
 > Example Request
@@ -167,3 +200,11 @@ curl -H "Authorization: Token YOUR_API_TOKEN_HERE" https://staphopia.emory.edu/a
 ```
 
 Returns a single sample which is public or that you own. An empty result will be returned if a request is made for a sample which is not public.
+
+#### Arguments
+
+Property  | Type      | Required | Description
+--------- | --------- | -------- | -----------
+sample_id | int       | true     | Unique number associated with a sample.
+
+
