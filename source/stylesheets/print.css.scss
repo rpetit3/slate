@@ -32,7 +32,6 @@ body {
 }
 
 .tocify-wrapper>img {
-  margin: 0 auto;
   display: block;
 }
 
@@ -45,12 +44,6 @@ body {
     border: 1px solid $print-color;
     border-radius: 5px;
     font-size: 0.8em;
-  }
-
-  pre {
-    code {
-      border: 0;
-    }
   }
 
   pre {

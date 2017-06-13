@@ -5,7 +5,7 @@ In most cases you can use a simple GET request to get info on a single sample or
 
 Below are endpoints to access samples. Methods to access analysis results for a single sample and multiple samples will be described in following sections.
 
-## GET All Samples
+### GET All Samples
 > Definition
 
 ```plaintext
@@ -42,7 +42,7 @@ curl -H "Authorization: Token YOUR_API_TOKEN_HERE" https://staphopia.emory.edu/a
 
 Returns a list of samples that either you own or have been made public. The resulting set can be filtered by sequence types.
 
-### Options
+#### Options
 
 Option    | Type      | Description
 --------- | --------- | -----------
@@ -50,7 +50,7 @@ st        | int       | Filter the samples based on a specific sequence type.
 
 
 
-## GET Public Samples
+### GET Public Samples
 > Definition
 
 ```plaintext
@@ -87,7 +87,7 @@ curl -H "Authorization: Token YOUR_API_TOKEN_HERE" https://staphopia.emory.edu/a
 
 Returns a list of samples that have been made public.
 
-## GET Published Samples
+### GET Published Samples
 > Definition
 
 ```plaintext
@@ -128,7 +128,7 @@ curl -H "Authorization: Token YOUR_API_TOKEN_HERE" https://staphopia.emory.edu/a
 Returns a list of samples that have been associated with a publication.
 
 
-## GET MLST Distinct Sample Set
+### GET MLST Distinct Sample Set
 > Definition
 
 ```plaintext
@@ -164,7 +164,7 @@ curl -H "Authorization: Token YOUR_API_TOKEN_HERE" https://staphopia.emory.edu/a
 
 Returns a set up samples each having a different seqeunce type (MLST). The priority is to select published samples first, then quality of the sample.
 
-## GET Single Sample
+### GET Single Sample
 > Definition
 
 ```plaintext
@@ -201,7 +201,7 @@ curl -H "Authorization: Token YOUR_API_TOKEN_HERE" https://staphopia.emory.edu/a
 
 Returns a single sample which is public or that you own. An empty result will be returned if a request is made for a sample which is not public.
 
-### Arguments
+#### Arguments
 
 Property  | Type      | Required | Description
 --------- | --------- | -------- | -----------
