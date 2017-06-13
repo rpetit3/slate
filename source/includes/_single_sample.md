@@ -171,7 +171,7 @@ curl -H "Authorization: Token YOUR_API_TOKEN_HERE" https://staphopia.emory.edu/a
 }
 ```
 
-Returns seqeuncing quality metrics associated with a given `sample_id`. By default the error corrected and quality filtered results are returned.
+Returns sequencing quality metrics associated with a given `sample_id`. By default the error corrected and quality filtered results are returned.
 
 #### Arguments
 

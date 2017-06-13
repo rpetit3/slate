@@ -2,13 +2,13 @@
 > Definition
 
 ```plaintext
-GET|POST https://staphopia.emory.edu/
+
 ```
 
 > Example Request
 
 ```shell
-curl -H "Authorization: Token YOUR_API_TOKEN_HERE" https://staphopia.emory.edu
+
 ```
 
 > Example Response
@@ -32,5 +32,4 @@ Property  | Type      | Required | Description
 Option    | Type      | Description
 --------- | --------- | -----------
  | | 
-
 
