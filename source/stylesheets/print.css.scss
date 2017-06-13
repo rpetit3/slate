@@ -37,7 +37,7 @@ body {
 }
 
 .content {
-  font-size: 12px;
+  @extend %default-font;
 
   pre, code {
     @extend %code-font;
