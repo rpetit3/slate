@@ -1,7 +1,7 @@
 # Endpoint Index
 Below is a running list of currently available endpoints.
 
-```
+```plaintext
 /api/
 /api/assembly/contig/
 /api/assembly/contig/<pk>/

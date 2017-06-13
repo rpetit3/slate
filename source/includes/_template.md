@@ -1,4 +1,4 @@
-### GET|POST TITLE
+## GET|POST TITLE
 > Definition
 
 ```plaintext
@@ -21,7 +21,7 @@ curl -H "Authorization: Token YOUR_API_TOKEN_HERE" https://staphopia.emory.edu
 
 DESCRIPTION
 
-#### Arguments
+### Arguments
 
 Property  | Type      | Required | Description
 --------- | --------- | -------- | -----------

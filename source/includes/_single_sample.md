@@ -1,6 +1,6 @@
 # Working With A Single Sample
 
-### GET Tags
+## GET Tags
 > Definition
 
 ```plaintext
@@ -31,13 +31,13 @@ curl -H "Authorization: Token YOUR_API_TOKEN_HERE" https://staphopia.emory.edu/a
 
 Returns a list of tags associated with a given `sample_id`.
 
-#### Arguments
+### Arguments
 
 Property  | Type      | Required | Description
 --------- | --------- | -------- | -----------
 sample_id | int       | true     | Unique number associated with a sample.
 
-### GET Metadata
+## GET Metadata
 > Definition
 
 ```plaintext
@@ -122,13 +122,13 @@ curl -H "Authorization: Token YOUR_API_TOKEN_HERE" https://staphopia.emory.edu/a
 
 Returns metadata associated with a given `sample_id`.
 
-#### Arguments
+### Arguments
 
 Property  | Type      | Required | Description
 --------- | --------- | -------- | -----------
 sample_id | int       | true     | Unique number associated with a sample.
 
-### GET Sequencing Metrics
+## GET Sequencing Metrics
 > Definition
 
 ```plaintext
@@ -173,19 +173,19 @@ curl -H "Authorization: Token YOUR_API_TOKEN_HERE" https://staphopia.emory.edu/a
 
 Returns seqeuncing quality metrics associated with a given `sample_id`. By default the error corrected and quality filtered results are returned.
 
-#### Arguments
+### Arguments
 
 Property  | Type      | Required | Description
 --------- | --------- | -------- | -----------
 sample_id | int       | true     | Unique number associated with a sample.
 
-#### Options
+### Options
 
 Option    | Type      | Description
 --------- | --------- | -----------
 original  | bool      | Return sequencing quality of the original input FASTQ file. 
 
-### GET Assembly Metrics
+## GET Assembly Metrics
 > Definition
 
 ```plaintext
@@ -240,20 +240,20 @@ curl -H "Authorization: Token YOUR_API_TOKEN_HERE" https://staphopia.emory.edu/a
 
 Returns assembly related metrics associated with a given `sample_id`. By default metrics for the assembled contigs is returned.
 
-#### Arguments
+### Arguments
 
 Property  | Type      | Required | Description
 --------- | --------- | -------- | -----------
 sample_id | int       | true     | Unique number associated with a sample.
 
-#### Options
+### Options
 
 Option     | Type      | Description
 ---------- | --------- | -----------
 scaffolds  | bool      | Return assembly metrics for the generated scaffolds. 
 plasmids  | bool      | Return assembly metrics for the assembled plasmids. 
 
-### GET Assembled Contigs
+## GET Assembled Contigs
 > Definition
 
 ```plaintext
@@ -285,19 +285,19 @@ curl -H "Authorization: Token YOUR_API_TOKEN_HERE" https://staphopia.emory.edu/a
 
 Returns assembled contig sequences associated with a given `sample_id`. By default the assembled contigs are returned.
 
-#### Arguments
+### Arguments
 
 Property  | Type      | Required | Description
 --------- | --------- | -------- | -----------
 sample_id | int       | true     | Unique number associated with a sample.
 
-#### Options
+### Options
 
 Option     | Type      | Description
 ---------- | --------- | -----------
 plasmids   | bool      | Return assembled plasmid contigs. 
 
-### GET SRST2 Based Sequence Type
+## GET SRST2 Based Sequence Type
 > Definition
 
 ```plaintext
@@ -339,13 +339,13 @@ curl -H "Authorization: Token YOUR_API_TOKEN_HERE" https://staphopia.emory.edu/a
 
 Returns the SRST2 based sequence type associated with a given `sample_id`. 
 
-#### Arguments
+### Arguments
 
 Property  | Type      | Required | Description
 --------- | --------- | -------- | -----------
 sample_id | int       | true     | Unique number associated with a sample.
 
-### GET BLAST Based Sequence Type
+## GET BLAST Based Sequence Type
 > Definition
 
 ```plaintext
@@ -382,13 +382,13 @@ curl -H "Authorization: Token YOUR_API_TOKEN_HERE" https://staphopia.emory.edu/a
 
 Returns the BALST based sequence type associated with a given `sample_id`. 
 
-#### Arguments
+### Arguments
 
 Property  | Type      | Required | Description
 --------- | --------- | -------- | -----------
 sample_id | int       | true     | Unique number associated with a sample.
 
-### GET Genes
+## GET Genes
 > Definition
 
 ```plaintext
@@ -435,20 +435,20 @@ curl -H "Authorization: Token YOUR_API_TOKEN_HERE" https://staphopia.emory.edu/a
 
 Returns the predicted/annotated genes associated with a given `sample_id`. 
 
-#### Arguments
+### Arguments
 
 Property  | Type      | Required | Description
 --------- | --------- | -------- | -----------
 sample_id | int       | true     | Unique number associated with a sample.
 
-#### Options
+### Options
 
 Option     | Type      | Description
 ---------- | --------- | -----------
 cluster_id | int       | Filter the samples based on a cluster id.
 product_id | int       | Filter the samples based on a product id.
 
-### GET SCCmec Primer Hits
+## GET SCCmec Primer Hits
 > Definition
 
 ```plaintext
@@ -518,13 +518,13 @@ curl -H "Authorization: Token YOUR_API_TOKEN_HERE" https://staphopia.emory.edu/a
 
 Returns the BLAST results of hits against SCCmec Primer sequences associated with a given `sample_id`. 
 
-#### Arguments
+### Arguments
 
 Property  | Type      | Required | Description
 --------- | --------- | -------- | -----------
 sample_id | int       | true     | Unique number associated with a sample.
 
-#### Options
+### Options
 
 Option     | Type      | Description
 ---------- | --------- | -----------
@@ -533,7 +533,7 @@ predict    | bool      | Predict SCCmec type based on presence of exact matches.
 
 <aside class="warning">SCCmec types with a prediction of 'false' may or may not be accurate. An exact match against the primer is required to make a prediction. Partial hits are not taken into account. Therefore, you will need to review the blast results for false hits. </aside>
 
-### GET SCCmec Subtype Hits
+## GET SCCmec Subtype Hits
 > Definition
 
 ```plaintext
@@ -602,13 +602,13 @@ curl -H "Authorization: Token YOUR_API_TOKEN_HERE" https://staphopia.emory.edu/a
 
 Returns the BLAST results of hits against SCCmec Subtype Primer sequences associated with a given `sample_id`. 
 
-#### Arguments
+### Arguments
 
 Property  | Type      | Required | Description
 --------- | --------- | -------- | -----------
 sample_id | int       | true     | Unique number associated with a sample.
 
-#### Options
+### Options
 
 Option     | Type      | Description
 ---------- | --------- | -----------
@@ -617,7 +617,7 @@ predict    | bool      | Predict SCCmec subtype based on presence of exact match
 
 <aside class="warning">SCCmec subtypes with a prediction of 'false' may or may not be accurate. An exact match against the primer is required to make a prediction. Partial hits are not taken into account. Therefore, you will need to review the blast results for false hits. </aside>
 
-### GET SCCmec Protein Hits
+## GET SCCmec Protein Hits
 > Definition
 
 ```plaintext
@@ -664,13 +664,13 @@ curl -H "Authorization: Token YOUR_API_TOKEN_HERE" https://staphopia.emory.edu/a
 
 Returns the BLAST results of hits against SCCmec Protein sequences associated with a given `sample_id`. 
 
-#### Arguments
+### Arguments
 
 Property  | Type      | Required | Description
 --------- | --------- | -------- | -----------
 sample_id | int       | true     | Unique number associated with a sample.
 
-### GET SCCmec Cassette Coverage
+## GET SCCmec Cassette Coverage
 > Definition
 
 ```plaintext
@@ -710,13 +710,13 @@ curl -H "Authorization: Token YOUR_API_TOKEN_HERE" https://staphopia.emory.edu/a
 
 Returns the alignment coverage across each full length SCCmec cassette associated with a given `sample_id`. 
 
-#### Arguments
+### Arguments
 
 Property  | Type      | Required | Description
 --------- | --------- | -------- | -----------
 sample_id | int       | true     | Unique number associated with a sample.
 
-### GET SNPs
+## GET SNPs
 > Definition
 
 ```plaintext
@@ -770,19 +770,19 @@ curl -H "Authorization: Token YOUR_API_TOKEN_HERE" https://staphopia.emory.edu/a
 
 Returns the SNPs associated with a given `sample_id`. 
 
-#### Arguments
+### Arguments
 
 Property  | Type      | Required | Description
 --------- | --------- | -------- | -----------
 sample_id | int       | true     | Unique number associated with a sample.
 
-#### Options
+### Options
 
 Option     | Type      | Description
 ---------- | --------- | -----------
 paginate   | bool      | Paginate the response.
 
-### GET InDels
+## GET InDels
 > Definition
 
 ```plaintext
@@ -829,13 +829,13 @@ curl -H "Authorization: Token YOUR_API_TOKEN_HERE" https://staphopia.emory.edu/a
 
 Returns the InDels associated with a given `sample_id`. 
 
-#### Arguments
+### Arguments
 
 Property  | Type      | Required | Description
 --------- | --------- | -------- | -----------
 sample_id | int       | true     | Unique number associated with a sample.
 
-#### Options
+### Options
 
 Option     | Type      | Description
 ---------- | --------- | -----------

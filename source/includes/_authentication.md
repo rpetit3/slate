@@ -1,7 +1,7 @@
 # Authentication
 In order to use the Staphopia API, you must first register an account with [Staphopia](https://staphopia.emory.edu/accounts/register/). Once you have registered an account you will receive an API Token. The API token provides read-only access to the API. You can not make any changes to your account or the database with the token.
 
-### Acquiring Your API Token
+## Acquiring Your API Token
 First you will want to navigate to [Staphopia](https://staphopia.emory.edu). Once you get there go ahead and login.
 
 ![alt text](images/token-000.png "Select Login")
