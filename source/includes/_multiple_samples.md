@@ -224,11 +224,11 @@ Option     | Type      | Description
 scaffolds  | bool      | Return assembly metrics for the generated scaffolds. 
 plasmids   | bool      | Return assembly metrics for the assembled plasmids. 
 
-### POST SRST2 Based Sequence Type
+### POST MLST
 > Definition
 
 ```plaintext
-POST https://staphopia.emory.edu/api/mlst/srst2/bulk_by_sample/
+POST https://staphopia.emory.edu/api/mlst/bulk_by_sample/
 ```
 
 > Example Request
@@ -236,7 +236,7 @@ POST https://staphopia.emory.edu/api/mlst/srst2/bulk_by_sample/
 ```shell
 curl -H "Authorization: Token YOUR_API_TOKEN_HERE" \
      -H "Content-Type: application/json" \
-     https://staphopia.emory.edu/api/mlst/srst2/bulk_by_sample/ \
+     https://staphopia.emory.edu/api/mlst/bulk_by_sample/ \
      -d '{"ids" : [500,501]}'
 ```
 
@@ -244,30 +244,29 @@ curl -H "Authorization: Token YOUR_API_TOKEN_HERE" \
 
 ```json
 {
+    "message": "success",
+    "took": "3.39 ms",
     "count": 2,
     "results": [
         {
             "sample_id": 500,
-            "st_original": "239",
-            "st_stripped": 239,
-            "is_exact": true,
-            "arcc": "2",
-            "aroe": "3",
-            "glpf": "1",
-            "gmk": "1",
-            "pta": "4",
-            "tpi": "4",
-            "yqil": "3",
-            "mismatches": "0",
-            "uncertainty": "-",
-            "depth": 101.145,
-            "maxMAF": 0.025641
+            "st": 239,
+            "ariba": 239,
+            "mentalist": 239,
+            "blast": 239
+        },
+        {
+            "sample_id": 501,
+            "st": 30,
+            "ariba": 30,
+            "mentalist": 30,
+            "blast": 30
         }
     ]
 }
 ```
 
-Returns the SRST2 based sequence type associated with a given set of Sample IDs. 
+Returns the MLST results associated with a given set of Sample IDs. 
 
 #### Arguments
 
@@ -275,11 +274,12 @@ Property  | Type      | Required | Description
 --------- | --------- | -------- | -----------
 ids       | int array | true     | An array of sample IDs as integers.
 
-### POST BLAST Based Sequence Type
+
+### POST cgMLST
 > Definition
 
 ```plaintext
-POST https://staphopia.emory.edu/api/mlst/blast/bulk_by_sample/
+POST https://staphopia.emory.edu/api/cgmlst/bulk_by_sample/
 ```
 
 > Example Request
@@ -287,7 +287,7 @@ POST https://staphopia.emory.edu/api/mlst/blast/bulk_by_sample/
 ```shell
 curl -H "Authorization: Token YOUR_API_TOKEN_HERE" \
      -H "Content-Type: application/json" \
-     https://staphopia.emory.edu/api/mlst/blast/bulk_by_sample/ \
+     https://staphopia.emory.edu/api/cgmlst/bulk_by_sample/ \
      -d '{"ids" : [500,501]}'
 ```
 
@@ -295,31 +295,48 @@ curl -H "Authorization: Token YOUR_API_TOKEN_HERE" \
 
 ```json
 {
-    "count": 14,
+    "message": "success",
+    "took": "35.44 ms",
+    "count": 2,
     "results": [
         {
             "sample_id": 500,
-            "locus_name": "arcC",
-            "locus_id": 2,
-            "bitscore": 843,
-            "slen": 456,
-            "length": 456,
-            "gaps": 0,
-            "mismatch": 0,
-            "pident": 100.0,
-            "evalue": 0.0
+            "SACOL0001": 2,
+            "SACOL0002": 2,
+            "SACOL0003": 1,
+            "SACOL0004": 2,
+            "SACOL0005": 2,
+            "SACOL0006": 9,
+            "SACOL0007": 2,
+            "SACOL0009": 2,
+            "SACOL0010": 2,
+            "TRUNCATED FOR DEMO PURPOSES": 0
+        },
+        {
+            "sample_id": 501,
+            "SACOL0001": 2,
+            "SACOL0002": 2,
+            "SACOL0003": 1,
+            "SACOL0004": 2,
+            "SACOL0005": 2,
+            "SACOL0006": 2,
+            "SACOL0007": 2,
+            "SACOL0009": 2,
+            "SACOL0010": 2,
+            "TRUNCATED FOR DEMO PURPOSES": 0
         }
     ]
 }
 ```
 
-Returns the BALST based sequence type associated with a given set of Sample IDs. 
+Returns the cgMLST results associated with a given set of Sample IDs. 
 
 #### Arguments
 
 Property  | Type      | Required | Description
 --------- | --------- | -------- | -----------
 ids       | int array | true     | An array of sample IDs as integers.
+
 
 ### POST SCCmec Primer Hits
 > Definition

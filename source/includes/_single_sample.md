@@ -10,7 +10,7 @@ GET https://staphopia.emory.edu/api/sample/<sample_id>/tags/
 > Example Request
 
 ```shell
-curl -H "Authorization: Token YOUR_API_TOKEN_HERE" https://staphopia.emory.edu/api/sample/2786/tags/
+curl -H "Authorization: Token YOUR_API_TOKEN_HERE" https://staphopia.emory.edu/api/sample/500/tags/
 ```
 
 > Example Response
@@ -20,7 +20,7 @@ curl -H "Authorization: Token YOUR_API_TOKEN_HERE" https://staphopia.emory.edu/a
     "count": 1,
     "results": [
         {
-            "sample_id": 2786,
+            "sample_id": 500,
             "tag_id": 10,
             "tag": "unique-st-set",
             "comment": "A set of ENA samples, each of which have a different ST. Priority is published over unpublished samples, and Gold rank samples over other. Samples with > 90k variants were excluded. Set was last generated on 5/30/17 (407 samples)"
@@ -47,7 +47,7 @@ GET https://staphopia.emory.edu/api/sample/<sample_id>/metadata/
 > Example Request
 
 ```shell
-curl -H "Authorization: Token YOUR_API_TOKEN_HERE" https://staphopia.emory.edu/api/sample/2786/metadata/
+curl -H "Authorization: Token YOUR_API_TOKEN_HERE" https://staphopia.emory.edu/api/sample/500/metadata/
 ```
 
 > Example Response
@@ -57,7 +57,7 @@ curl -H "Authorization: Token YOUR_API_TOKEN_HERE" https://staphopia.emory.edu/a
     "count": 1,
     "results": [
         {
-            "sample_id": 2786,
+            "sample_id": 500,
             "contains_ena_metadata": true,
             "study_accession": "PRJEB2655",
             "study_title": "Diversity_of_MRSA",
@@ -138,7 +138,7 @@ GET https://staphopia.emory.edu/api/sample/<sample_id>/qc/
 > Example Request
 
 ```shell
-curl -H "Authorization: Token YOUR_API_TOKEN_HERE" https://staphopia.emory.edu/api/sample/2786/qc/
+curl -H "Authorization: Token YOUR_API_TOKEN_HERE" https://staphopia.emory.edu/api/sample/500/qc/
 ```
 
 > Example Response
@@ -148,7 +148,7 @@ curl -H "Authorization: Token YOUR_API_TOKEN_HERE" https://staphopia.emory.edu/a
     "count": 1,
     "results": [
         {
-            "sample_id": 2786,
+            "sample_id": 500,
             "is_original": false,
             "rank": 3,
             "total_bp": 281481600,
@@ -195,7 +195,7 @@ GET https://staphopia.emory.edu/api/sample/<sample_id>/assembly/
 > Example Request
 
 ```shell
-curl -H "Authorization: Token YOUR_API_TOKEN_HERE" https://staphopia.emory.edu/api/sample/2786/assembly/
+curl -H "Authorization: Token YOUR_API_TOKEN_HERE" https://staphopia.emory.edu/api/sample/500/assembly/
 ```
 
 > Example Response
@@ -205,7 +205,7 @@ curl -H "Authorization: Token YOUR_API_TOKEN_HERE" https://staphopia.emory.edu/a
     "count": 1,
     "results": [
         {
-            "sample_id": 2786,
+            "sample_id": 500,
             "is_scaffolds": false,
             "is_plasmids": false,
             "total_contig": 91,
@@ -263,7 +263,7 @@ GET https://staphopia.emory.edu/api/sample/<sample_id>/contigs/
 > Example Request
 
 ```shell
-curl -H "Authorization: Token YOUR_API_TOKEN_HERE" https://staphopia.emory.edu/api/sample/2786/contigs/
+curl -H "Authorization: Token YOUR_API_TOKEN_HERE" https://staphopia.emory.edu/api/sample/500/contigs/
 ```
 
 > Example Response
@@ -273,7 +273,7 @@ curl -H "Authorization: Token YOUR_API_TOKEN_HERE" https://staphopia.emory.edu/a
     "count": 85,
     "results": [
         {
-            "sample_id": 2786,
+            "sample_id": 500,
             "name": "NODE_16_length_34020_cov_43.5996",
             "length": 34020,
             "is_plasmids": false,
@@ -297,47 +297,39 @@ Option     | Type      | Description
 ---------- | --------- | -----------
 plasmids   | bool      | Return assembled plasmid contigs. 
 
-### GET SRST2 Based Sequence Type
+### GET MLST
 > Definition
 
 ```plaintext
-GET https://staphopia.emory.edu/api/sample/<sample_id>/st_srst2/
+GET https://staphopia.emory.edu/api/sample/<sample_id>/st/
 ```
 
 > Example Request
 
 ```shell
-curl -H "Authorization: Token YOUR_API_TOKEN_HERE" https://staphopia.emory.edu/api/sample/2786/st_srst2/
+curl -H "Authorization: Token YOUR_API_TOKEN_HERE" https://staphopia.emory.edu/api/sample/500/st/
 ```
 
 > Example Response
 
 ```json
 {
+    "message": "success",
+    "took": "4.90 ms",
     "count": 1,
     "results": [
         {
-            "sample_id": 2786,
-            "st_original": "5",
-            "st_stripped": 5,
-            "is_exact": true,
-            "arcc": "1",
-            "aroe": "4",
-            "glpf": "1",
-            "gmk": "4",
-            "pta": "12",
-            "tpi": "1",
-            "yqil": "10",
-            "mismatches": "0",
-            "uncertainty": "-",
-            "depth": 87.856,
-            "maxMAF": 0.0149254
+            "sample_id": 500,
+            "st": 239,
+            "ariba": 239,
+            "mentalist": 239,
+            "blast": 239
         }
     ]
 }
 ```
 
-Returns the SRST2 based sequence type associated with a given `sample_id`. 
+Retrieve MLST results based on Ariba, Mentalist and BLAST for a given `sample_id`. 
 
 #### Arguments
 
@@ -345,42 +337,55 @@ Property  | Type      | Required | Description
 --------- | --------- | -------- | -----------
 sample_id | int       | true     | Unique number associated with a sample.
 
-### GET BLAST Based Sequence Type
+
+### GET cgMLST
 > Definition
 
 ```plaintext
-GET https://staphopia.emory.edu/api/sample/<sample_id>/st_blast/
+GET https://staphopia.emory.edu/api/sample/<sample_id>/cgmlst/
 ```
 
 > Example Request
 
 ```shell
-curl -H "Authorization: Token YOUR_API_TOKEN_HERE" https://staphopia.emory.edu/api/sample/2786/st_blast/
+curl -H "Authorization: Token YOUR_API_TOKEN_HERE" https://staphopia.emory.edu/api/sample/500/cgmlst/
 ```
 
 > Example Response
 
 ```json
 {
-    "count": 7,
+    "message": "success",
+    "took": "20.58 ms",
+    "count": 1,
     "results": [
         {
-            "sample_id": 2786,
-            "locus_name": "arcC",
-            "locus_id": 1,
-            "bitscore": 843,
-            "slen": 456,
-            "length": 456,
-            "gaps": 0,
-            "mismatch": 0,
-            "pident": 100.0,
-            "evalue": 0.0
+            "sample_id": 500,
+            "SACOL0001": 2,
+            "SACOL0002": 2,
+            "SACOL0003": 1,
+            "SACOL0004": 2,
+            "SACOL0005": 2,
+            "SACOL0006": 9,
+            "SACOL0007": 2,
+            "SACOL0009": 2,
+            "SACOL0010": 2,
+            "SACOL0011": 2,
+            "SACOL0012": 13,
+            "SACOL0013": 2,
+            "SACOL0014": 2,
+            "SACOL0015": 2,
+            "SACOL0016": 13,
+            "SACOL0018": 2,
+            "SACOL0019": 2,
+            "SACOL0020": 16,
+            "TRUNCATED FOR DEMO PURPOSES": 0
         }
     ]
 }
 ```
 
-Returns the BALST based sequence type associated with a given `sample_id`. 
+Returns the cgMLST as determined by MentaLiST for a given `sample_id`. 
 
 #### Arguments
 
@@ -398,7 +403,7 @@ GET https://staphopia.emory.edu/api/sample/<sample_id>/genes/
 > Example Request
 
 ```shell
-curl -H "Authorization: Token YOUR_API_TOKEN_HERE" https://staphopia.emory.edu/api/sample/2786/genes/
+curl -H "Authorization: Token YOUR_API_TOKEN_HERE" https://staphopia.emory.edu/api/sample/500/genes/
 ```
 
 > Example Response
@@ -406,11 +411,11 @@ curl -H "Authorization: Token YOUR_API_TOKEN_HERE" https://staphopia.emory.edu/a
 ```json
 {
     "count": 2883,
-    "next": "https://merlin.genetics.emory.edu/api/sample/2786/genes/?page=2",
+    "next": "https://merlin.genetics.emory.edu/api/sample/500/genes/?page=2",
     "previous": null,
     "results": [
         {
-            "sample_id": 2786,
+            "sample_id": 500,
             "annotation_id": 1282,
             "start": 34945,
             "end": 35139,
@@ -458,7 +463,7 @@ GET https://staphopia.emory.edu/api/sample/<sample_id>/sccmec_primers/
 > Example Request
 
 ```shell
-curl -H "Authorization: Token YOUR_API_TOKEN_HERE" https://staphopia.emory.edu/api/sample/2786/sccmec_primers/
+curl -H "Authorization: Token YOUR_API_TOKEN_HERE" https://staphopia.emory.edu/api/sample/500/sccmec_primers/
 ```
 
 > Example Response
@@ -468,7 +473,7 @@ curl -H "Authorization: Token YOUR_API_TOKEN_HERE" https://staphopia.emory.edu/a
     "count": 27,
     "results": [
         {
-            "sample_id": 2786,
+            "sample_id": 500,
             "title": "ccrA1",
             "length": 24,
             "bitscore": 25,
@@ -499,7 +504,7 @@ curl -H "Authorization: Token YOUR_API_TOKEN_HERE" https://staphopia.emory.edu/a
     "count": 1,
     "results": [
         {
-            "sample_id": "2786",
+            "sample_id": "500",
             "I": false,
             "II": false,
             "III": false,

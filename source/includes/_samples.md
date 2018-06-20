@@ -208,3 +208,63 @@ Property  | Type      | Required | Description
 sample_id | int       | true     | Unique number associated with a sample.
 
 
+
+### GET Search Samples
+> Definition
+
+```plaintext
+GET https://staphopia.emory.edu/api/search/?q=<query_sting>
+```
+
+> Example Request
+
+```shell
+curl -H "Authorization: Token YOUR_API_TOKEN_HERE" https://staphopia.emory.edu/api/search/?q=PRJEB2756
+```
+
+> Example Response
+
+```json
+{
+    "count": 318,
+    "next": "https://staphopia.emory.edu/api/search/?page=2&q=PRJEB2756",
+    "previous": null,
+    "results": [
+        {
+            "sample_id": 262,
+            "name": "ERX085322",
+            "is_published": true,
+            "st": 22,
+            "rank": "Gold",
+            "sample_accession": "SAMEA1317454",
+            "strain": "BSAC516",
+            "collection_date": "2003-01-01",
+            "location": "United Kingdom: England",
+            "isolation_source": "blood"
+        },
+        {
+            "sample_id": 263,
+            "name": "ERX085323",
+            "is_published": true,
+            "st": 22,
+            "rank": "Gold",
+            "sample_accession": "SAMEA1317339",
+            "strain": "BSAC519",
+            "collection_date": "2003-01-01",
+            "location": "United Kingdom: England",
+            "isolation_source": "blood"
+        },
+        {
+            "TRUNCATED FOR DEMO PURPOSES": 0
+        },
+    ]
+}
+```
+
+Searches a given query string against all metadata fields. Returns a set of samples that matched the query string.
+
+#### Arguments
+
+Property  | Type      | Required | Description
+--------- | --------- | -------- | -----------
+q         | str       | true     | Query string to search.
